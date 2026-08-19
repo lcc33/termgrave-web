@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#f2f0ec" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0e0e0e" media="(prefers-color-scheme: dark)">
+
+  <title>Terminal Graveyard | Smart Desktop Command Vault & Shell History Manager</title>
+
+  <meta name="title" content="Terminal Graveyard | Smart Desktop Command Vault & Shell History Manager">
+  <meta name="description" content="Stop pressing the up arrow 100 times. Terminal Graveyard is a private, lightweight desktop command vault that watches your shell, records timestamps & working directories, and makes command history searchable, taggable, and annotatable.">
+  <meta name="keywords" content="terminal graveyard, shell history, command vault, terminal productivity, developer tools, bash history search, zsh command vault, powershell history, tauri desktop app, local-first developer tools">
+  <meta name="author" content="Muhammad | Aizen">
+  <meta name="creator" content="Muhammad | Aizen">
+  <meta name="publisher" content="Terminal Graveyard">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <meta name="googlebot" content="index, follow">
+  <meta name="application-name" content="Terminal Graveyard">
+  <meta name="apple-mobile-web-app-title" content="Terminal Graveyard">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="format-detection" content="telephone=no">
+
+  <link rel="canonical" href="https://github.com/lcc33/terminal-graveyard">
+  <link rel="icon" type="image/jpeg" href="https://i.pinimg.com/1200x/97/3b/ac/973baccd23c790d2cf8e0b19bd0019dc.jpg">
+  <link rel="apple-touch-icon" href="https://i.pinimg.com/1200x/97/3b/ac/973baccd23c790d2cf8e0b19bd0019dc.jpg">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Terminal Graveyard">
+  <meta property="og:url" content="https://github.com/lcc33/terminal-graveyard">
+  <meta property="og:title" content="Terminal Graveyard | Smart Desktop Command Vault">
+  <meta property="og:description" content="Shell history is dumb text — we make it smart. A lightweight local command vault that watches your shell history and makes it searchable, taggable, and vaultable.">
+  <meta property="og:image" content="https://i.pinimg.com/1200x/97/3b/ac/973baccd23c790d2cf8e0b19bd0019dc.jpg">
+  <meta property="og:image:alt" content="Terminal Graveyard App Icon">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="1200">
+  <meta property="og:locale" content="en_US">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://github.com/lcc33/terminal-graveyard">
+  <meta name="twitter:title" content="Terminal Graveyard | Smart Desktop Command Vault">
+  <meta name="twitter:description" content="Stop pressing the up arrow 100 times. A private, lightweight desktop command vault that watches your shell and makes your terminal history searchable.">
+  <meta name="twitter:image" content="https://i.pinimg.com/1200x/97/3b/ac/973baccd23c790d2cf8e0b19bd0019dc.jpg">
+  <meta name="twitter:image:alt" content="Terminal Graveyard App">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "SoftwareApplication",
+        "name": "Terminal Graveyard",
+        "operatingSystem": "Windows 10, Windows 11",
+        "applicationCategory": "DeveloperApplication",
+        "applicationSubCategory": "Developer Productivity Tool",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "description": "A private, local-first desktop command vault that captures shell command context, working directories, execution duration, and timestamps to make history searchable, taggable, and annotatable.",
+        "image": "https://i.pinimg.com/1200x/97/3b/ac/973baccd23c790d2cf8e0b19bd0019dc.jpg",
+        "url": "https://github.com/lcc33/terminal-graveyard",
+        "downloadUrl": "https://github.com/lcc33/terminal-graveyard/releases",
+        "softwareVersion": "0.1.0",
+        "author": {
+          "@type": "Person",
+          "name": "Muhammad | Aizen",
+          "url": "https://github.com/lcc33"
+        },
+        "featureList": [
+          "Silent real-time shell command logging",
+          "Working directory and timestamp indexing",
+          "Execution duration tracking",
+          "Full-text fuzzy search across command history",
+          "Command vaulting, tagging, and annotations",
+          "One-click clipboard copy",
+          "Light and dark mode theme support"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "name": "Terminal Graveyard",
+        "url": "https://github.com/lcc33/terminal-graveyard",
+        "description": "Stop pressing the up arrow 100 times. Terminal Graveyard remembers your shell commands so you don't have to.",
+        "publisher": {
+          "@type": "Person",
+          "name": "Muhammad | Aizen"
+        }
+      }
+    ]
+  }
+  </script>
+
+  <script>
+    (function () {
+      function storedMode() {
+        try {
+          var m = localStorage.getItem('tg-color-scheme');
+          if (m === 'light' || m === 'dark') return m;
+        } catch (e) { }
+        return 'system';
+      }
+      function resolve() {
+        var mode = storedMode();
+        if (mode === 'light' || mode === 'dark') return mode;
+        try {
+          return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        } catch (e) { return 'light'; }
+      }
+      document.documentElement.setAttribute('data-theme', resolve());
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+
+  <nav class="nav" aria-label="Main Navigation">
+    <a href="#" class="nav-logo" aria-label="Terminal Graveyard Homepage">
+      <span class="nav-logo-name">terminal graveyard</span>
+      <span class="nav-logo-sub">🪦</span>
+    </a>
+
+    <div class="footer-left">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle between light and dark mode">
+        <div class="icon-container">
+          <svg class="sun-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2" />
+            <path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="2" />
+          </svg>
+          <svg class="moon-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="2" />
+          </svg>
+        </div>
+        <div class="clock-display">
+          <span id="currentClock"></span>
+        </div>
+      </button>
+    </div>
+
+    <div class="nav-right">
+      <a href="https://github.com/lcc33/terminal-graveyard" class="nav-github-badge" target="_blank" rel="noopener noreferrer" aria-label="Star Terminal Graveyard on GitHub">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
+        </svg>
+        <span>github</span>
+        <span class="star-count-badge" id="githubStars">
+          <svg class="star-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+          </svg>
+          <span id="starCount">★</span>
+        </span>
+      </a>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero" aria-labelledby="main-heading">
+      <h1 class="hero-title" id="main-heading">
+        So i kinda got frustrated because im always clicking the
+        <span class="hero-highlight">up arrow button</span>
+      </h1>
+      <p class="hero-subtitle">
+        to look for commands that i used <em>100 years ago</em>
+      </p>
+      <div class="dot dot-1" aria-hidden="true"></div>
+      <div class="dot dot-2" aria-hidden="true"></div>
+    </section>
+
+    <div class="sections">
+      <div class="app-row">
+        <img class="app-icon" src="https://i.pinimg.com/1200x/97/3b/ac/973baccd23c790d2cf8e0b19bd0019dc.jpg" alt="Terminal Graveyard desktop application icon" width="80" height="80">
+        <div>
+          <h2 class="app-name">terminal graveyard</h2>
+          <p class="app-tagline">your command vault</p>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <p class="section-text">
+          some commands are just long and complex mehn i can't remember them all
+        </p>
+      </div>
+
+      <div class="section-block">
+        <p class="section-text">
+          so i lowk built this app called <strong>Terminal Graveyard</strong>
+        </p>
+      </div>
+
+      <div class="section-block">
+        <p class="section-text">
+          (english version) It helps you keep track of your terminal commands and provides a historical perspective on the
+          evolution of command-line interfaces.
+
+          So basically every command you run on your terminal get's stored there, with the directory you ran the command
+          and also the date and time.
+          And also the amount of time it took for the command to run. I thought that would be a cool feature to have.
+
+          With this, you can search through your commands, filter them by date and time, and even copy them to your
+          clipboard.
+        </p>
+      </div>
+
+      <div class="section-block">
+        <p class="section-text">
+          so yall should check it out! and also give me a like on <a href="https://github.com/lcc33/terminal-graveyard" target="_blank" rel="noopener noreferrer">github</a>!!!!!!!!!!
+        </p>
+      </div>
+
+      <section class="download-section" aria-labelledby="download-title">
+        <p class="download-heading" id="download-title">here's the windows x64 installer download link</p>
+        <div class="download-buttons">
+          <a href="https://github.com/lcc33/terminal-graveyard/releases/download/v0.1.0/Terminal.Graveyard_0.1.0_x64_en-US.msi" class="download-btn download-track" data-file="msi" title="Download MSI installer for Windows x64">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M12 16L7 11h3V3h4v8h3l-5 5z" fill="currentColor" />
+              <path d="M20 18H4v2h16v-2z" fill="currentColor" />
+            </svg>
+            <span>download .msi</span>
+            <span class="btn-arrow" aria-hidden="true">►</span>
+          </a>
+          <a href="https://github.com/lcc33/terminal-graveyard/releases/download/v0.1.0/Terminal.Graveyard_0.1.0_x64-setup.exe" class="download-btn download-track" data-file="exe" title="Download EXE setup installer for Windows x64">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M12 16L7 11h3V3h4v8h3l-5 5z" fill="currentColor" />
+              <path d="M20 18H4v2h16v-2z" fill="currentColor" />
+            </svg>
+            <span>download .exe</span>
+            <span class="btn-arrow" aria-hidden="true">►</span>
+          </a>
+        </div>
+        <div class="download-stats" id="downloadStats" style="display: none;">
+          <span aria-hidden="true">📦</span>
+          <span id="totalDownloadsCount">0</span> downloads so far
+        </div>
+      </section>
+
+      <div class="extra-section">
+        <p class="extra-text">
+          i'm thinking of adding more features like mac and linux support, maybe even android (so you can use it on your
+          tablet ig)
+        </p>
+      </div>
+
+      <div class="extra-section">
+        <p class="extra-text">
+          idk man, just tryna make my life easier
+        </p>
+      </div>
+
+      <div class="extra-section">
+        <p class="extra-text">
+          help me out by giving me a star on my <a href="https://github.com/lcc33/terminal-graveyard" target="_blank" rel="noopener noreferrer">github</a>!!!!!!!!!!
+        </p>
+      </div>
+
+      <div class="extra-section">
+        <p class="extra-text">
+          PS: if you're reading this on a linux or mac device, then you can't use this app for now sorry(well you could
+          actually run it with wine on linux but mehhh) 😿I would work on both of
+          them next
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-right">
+      <div class="footer-social">
+        <a href="https://github.com/lcc33/terminal-graveyard" class="link-label" target="_blank" rel="noopener noreferrer" aria-label="Terminal Graveyard GitHub Repository">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
+          </svg>
+        </a>
+      </div>
+      <div class="footer-links">
+        <span class="made-by-text">made by</span>
+        <a href="https://github.com/lcc33" class="link-label" target="_blank" rel="noopener noreferrer">Muhammad | Aizen</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>
