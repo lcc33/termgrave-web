@@ -239,7 +239,7 @@
 
         <div class="os-panel active" id="panel-windows" role="tabpanel" aria-labelledby="tab-windows">
           <div class="download-buttons">
-            <a href="https://github.com/lcc33/terminal-graveyard/releases/download/v0.1.0/Terminal.Graveyard_0.1.0_x64-setup.exe" class="download-btn download-track" data-file="exe" title="Download EXE setup installer for Windows x64">
+            <a href="https://github.com/lcc33/terminal-graveyard/releases/download/v0.1.1/Terminal.Graveyard_0.1.1_x64-setup.exe" class="download-btn download-track" data-file="exe" title="Download EXE setup installer for Windows x64">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                 <path d="M12 16L7 11h3V3h4v8h3l-5 5z" fill="currentColor" />
                 <path d="M20 18H4v2h16v-2z" fill="currentColor" />
@@ -247,7 +247,7 @@
               <span>download .exe (installer)</span>
               <span class="btn-arrow" aria-hidden="true">►</span>
             </a>
-            <a href="https://github.com/lcc33/terminal-graveyard/releases/download/v0.1.0/Terminal.Graveyard_0.1.0_x64_en-US.msi" class="download-btn download-track" data-file="msi" title="Download MSI installer for Windows x64">
+            <a href="https://github.com/lcc33/terminal-graveyard/releases/download/v0.1.1/Terminal.Graveyard_0.1.1_x64_en-US.msi " class="download-btn download-track" data-file="msi" title="Download MSI installer for Windows x64">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                 <path d="M12 16L7 11h3V3h4v8h3l-5 5z" fill="currentColor" />
                 <path d="M20 18H4v2h16v-2z" fill="currentColor" />
@@ -261,7 +261,7 @@
 
         <div class="os-panel" id="panel-mac" role="tabpanel" aria-labelledby="tab-mac">
           <div class="download-buttons">
-            <a href="https://github.com/lcc33/terminal-graveyard/releases/download/v0.1.0/Terminal.Graveyard_0.1.0_universal.dmg" class="download-btn download-track" data-file="dmg" title="Download Universal DMG for macOS">
+            <a href="https://github.com/lcc33/terminal-graveyard/releases/download/v0.1.1/Terminal.Graveyard_0.1.1_universal.dmg" class="download-btn download-track" data-file="dmg" title="Download Universal DMG for macOS">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                 <path d="M12 16L7 11h3V3h4v8h3l-5 5z" fill="currentColor" />
                 <path d="M20 18H4v2h16v-2z" fill="currentColor" />
@@ -275,7 +275,7 @@
 
         <div class="os-panel" id="panel-linux" role="tabpanel" aria-labelledby="tab-linux">
           <div class="download-buttons">
-            <a href="https://github.com/lcc33/terminal-graveyard/releases/download/v0.1.0/terminal-graveyard_0.1.0_amd64.AppImage" class="download-btn download-track" data-file="appimage" title="Download AppImage for Linux x64">
+            <a href="https://github.com/lcc33/terminal-graveyard/releases/download/v0.1.1/Terminal.Graveyard_0.1.1_amd64.AppImage" class="download-btn download-track" data-file="appimage" title="Download AppImage for Linux x64">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                 <path d="M12 16L7 11h3V3h4v8h3l-5 5z" fill="currentColor" />
                 <path d="M20 18H4v2h16v-2z" fill="currentColor" />
@@ -283,7 +283,7 @@
               <span>download .AppImage</span>
               <span class="btn-arrow" aria-hidden="true">►</span>
             </a>
-            <a href="https://github.com/lcc33/terminal-graveyard/releases/download/v0.1.0/terminal-graveyard_0.1.0_amd64.deb" class="download-btn download-track" data-file="deb" title="Download DEB package for Ubuntu/Debian x64">
+            <a href="https://github.com/lcc33/terminal-graveyard/releases/download/v0.1.1/Terminal.Graveyard_0.1.1_amd64.deb" class="download-btn download-track" data-file="deb" title="Download DEB package for Ubuntu/Debian x64">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                 <path d="M12 16L7 11h3V3h4v8h3l-5 5z" fill="currentColor" />
                 <path d="M20 18H4v2h16v-2z" fill="currentColor" />
@@ -312,16 +312,24 @@
         </p>
       </div>
 
-      <div class="extra-section">
-        <p class="extra-text">
-          idk man, just tryna make my life easier
-        </p>
-      </div>
+      
 
       <div class="extra-section">
         <p class="extra-text">
           help me out by giving me a star on my <a href="https://github.com/lcc33/terminal-graveyard" target="_blank" rel="noopener noreferrer">github</a>!!!!!!!!!!
         </p>
+      </div>
+
+      <div class="extra-section suggestion-section">
+        <div class="suggestion-container">
+          <h3 class="suggestion-title">Not feeling the name "Terminal Graveyard"?</h3>
+          <p class="suggestion-desc">Drop your better name suggestion below!</p>
+          <form id="suggestionForm" class="suggestion-form">
+            <input type="text" id="nameSuggestion" class="suggestion-input" placeholder="e.g. CommandVault" required>
+            <button type="submit" class="suggestion-btn">Submit</button>
+          </form>
+          <div id="suggestionMessage" class="suggestion-message"></div>
+        </div>
       </div>
 
       <div class="extra-section">

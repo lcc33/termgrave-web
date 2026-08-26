@@ -214,11 +214,57 @@ class StatsManager {
   }
 }
 
+class SuggestionManager {
+  constructor() {
+    this.form = document.getElementById('suggestionForm');
+    this.input = document.getElementById('nameSuggestion');
+    this.message = document.getElementById('suggestionMessage');
+    this.init();
+  }
+
+  init() {
+    if (!this.form) return;
+    this.form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const suggestion = this.input.value.trim();
+      if (!suggestion) return;
+
+      try {
+        const response = await fetch('save_suggestion.php', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ suggestion })
+        });
+        const result = await response.json();
+        
+        if (response.ok && result.success) {
+          this.showMessage('Thanks for the suggestion!', 'success');
+          this.input.value = '';
+        } else {
+          this.showMessage('Failed to save suggestion.', 'error');
+        }
+      } catch (err) {
+        this.showMessage('Error submitting suggestion.', 'error');
+      }
+    });
+  }
+
+  showMessage(msg, type) {
+    this.message.textContent = msg;
+    this.message.className = `suggestion-message ${type}`;
+    setTimeout(() => {
+      this.message.className = 'suggestion-message';
+      this.message.textContent = '';
+    }, 5000);
+  }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   new ThemeManager();
   new ClockManager();
   new StatsManager();
   new PlatformManager();
+  new SuggestionManager();
 });
 
 document.addEventListener('keydown', (e) => {
