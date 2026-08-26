@@ -283,18 +283,79 @@ body {
   margin-bottom: 56px;
 }
 
+.download-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
 .download-heading {
   font-size: clamp(1.2rem, 2.5vw, 1.5rem);
   font-weight: 500;
-  margin-bottom: 16px;
   color: var(--fg);
+}
+
+.os-tabs {
+  display: inline-flex;
+  background: var(--nav-border);
+  padding: 4px;
+  border-radius: 30px;
+  gap: 4px;
+}
+
+.os-tab-btn {
+  font-family: inherit;
+  background: transparent;
+  border: none;
+  color: var(--muted);
+  padding: 6px 16px;
+  border-radius: 24px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+
+.os-tab-btn:hover {
+  color: var(--fg);
+}
+
+.os-tab-btn.active {
+  background: var(--fg);
+  color: var(--bg);
+}
+
+.os-panel {
+  display: none;
+  animation: fadeIn 0.25s ease forwards;
+}
+
+.os-panel.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .download-buttons {
   display: flex;
   gap: 14px;
   flex-wrap: wrap;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
 .download-btn {
@@ -337,13 +398,41 @@ body {
   margin-left: 4px;
 }
 
+.download-subtext {
+  font-size: 0.95rem;
+  color: var(--muted);
+  margin-bottom: 14px;
+}
+
+.download-meta-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px dashed var(--nav-border);
+}
+
 .download-stats {
-  margin-top: 10px;
   font-size: 0.95rem;
   color: var(--muted);
   display: inline-flex;
   align-items: center;
   gap: 6px;
+}
+
+.all-releases-link {
+  font-size: 0.95rem;
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+  transition: opacity 0.2s;
+}
+
+.all-releases-link:hover {
+  opacity: 0.7;
 }
 
 .download-note {

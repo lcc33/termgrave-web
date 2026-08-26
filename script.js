@@ -110,6 +110,49 @@ class ClockManager {
   }
 }
 
+class PlatformManager {
+  constructor() {
+    this.tabs = document.querySelectorAll('.os-tab-btn');
+    this.panels = document.querySelectorAll('.os-panel');
+    this.init();
+  }
+
+  detectPlatform() {
+    const ua = (navigator.userAgent || '').toLowerCase();
+    const platform = (navigator.platform || navigator.userAgentData?.platform || '').toLowerCase();
+    if (platform.includes('mac') || ua.includes('macintosh') || ua.includes('mac os')) {
+      return 'mac';
+    }
+    if (platform.includes('linux') || ua.includes('linux') || ua.includes('x11')) {
+      return 'linux';
+    }
+    return 'windows';
+  }
+
+  setPlatform(platformName) {
+    this.tabs.forEach((tab) => {
+      const isMatch = tab.getAttribute('data-target') === platformName;
+      tab.classList.toggle('active', isMatch);
+      tab.setAttribute('aria-selected', isMatch ? 'true' : 'false');
+    });
+    this.panels.forEach((panel) => {
+      panel.classList.toggle('active', panel.id === `panel-${platformName}`);
+    });
+  }
+
+  init() {
+    const current = this.detectPlatform();
+    this.setPlatform(current);
+
+    this.tabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        const target = tab.getAttribute('data-target');
+        if (target) this.setPlatform(target);
+      });
+    });
+  }
+}
+
 class StatsManager {
   constructor() {
     this.starEl = document.getElementById('starCount');
@@ -175,6 +218,7 @@ document.addEventListener('DOMContentLoaded', () => {
   new ThemeManager();
   new ClockManager();
   new StatsManager();
+  new PlatformManager();
 });
 
 document.addEventListener('keydown', (e) => {
@@ -185,3 +229,4 @@ document.addEventListener('keydown', (e) => {
     document.getElementById('themeToggle')?.click();
   }
 });
+
